@@ -1,0 +1,4 @@
+#!/bin/env bash
+set -e
+
+printf "$(pacman -Q | wc -l)"
