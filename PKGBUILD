@@ -7,12 +7,14 @@ pkgdesc="Qtile Configurations for Axyl OS"
 arch=('x86_64')
 url="https://github.com/axyl-os/axyl-qtile"
 license=('MIT')
-depends=('python-pip' 'python-psutil')
-makedepends=('git' 'python-pip' 'python-psutil')
+depends=('python-pip' 'python-psutil' 'axyl-fonts' 'qtile')
+makedepends=('git')
 provides=("${pkgname}")
 options=(!strip !emptydirs)
-source=("git+$url.git")
-sha256sums=('SKIP')
+
+prepare() {
+    cp -af ../files/. ${srcdir}
+}
 
 package() {
     local _skeldir=${pkgdir}/etc/skel
@@ -22,5 +24,5 @@ package() {
     mkdir -p "${_skeldir}" && mkdir -p "${_configdir}"
 
     # Copies Qtile configurations
-    cp -r ${srcdir}/files/qtile                 "${_configdir}"
+    cp -r ${srcdir}/qtile                 "${_configdir}"
 }
