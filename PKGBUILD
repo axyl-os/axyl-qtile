@@ -12,7 +12,7 @@ depends=('python-pip' 'python-psutil' 'axyl-fonts' 'qtile')
 makedepends=('git')
 provides=("${pkgname}")
 options=(!strip !emptydirs)
-source=(${_pkgname}::"git+https://github.com/Shinyzenith/${_pkgname}.git")
+source=(${_pkgname}::"git+https://github.com/Shinyzenith/${_pkgname}.git") # change Shinyzenith to your org name to get it to work. had to do this for tesitng
 sha256sums=('SKIP')
 install='post.install'
 
