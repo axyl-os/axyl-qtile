@@ -1,6 +1,5 @@
 #!/bin/env bash
 
-# This if statement only executes ksuperkey if you have it installed in your system.
 # The need for ksuperkey is only necessary if j4-dmenu-desktop does not show up when the super key is pressed.
 # If you don't have ksuperkey installed, get it from the aur: "yay -S ksuperkey"
 # Enable Super Keys For Menu
