@@ -19,7 +19,7 @@ declare -a options=(
 "Autostart - $HOME/.config/qtile/scripts/autostart.sh"
 "Feh (Wallpaper Background) - $HOME/.config/qtile/scripts/.fehbg"
 "Fish - $HOME/.config/fish/config.fish"
-"Picom - $HOME/.config/qtile/picom.conf"
+"Picom - $HOME/.config/picom.conf"
 "Qtile - $HOME/.config/qtile/config.py"
 "Vim - $HOME/.vimrc"
 )

@@ -22,11 +22,14 @@ dunst \
 
 # power manager and picom start
 xfce4-power-manager &
-picom --config $HOME/.config/qtile/picom.conf &
+picom --config $HOME/.config/picom.conf &
 
 if [[ ! `pidof xfce-polkit` ]]; then
     /usr/lib/xfce-polkit/xfce-polkit &
 fi
+
+# start mpd
+exec mpd &
 
 # Start udiskie
 udiskie &
