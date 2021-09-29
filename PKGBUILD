@@ -1,28 +1,30 @@
 # Maintainer: Gabriel Matthews <axyl.os.linux@gmail.com>
-
 pkgname=axyl-qtile
-pkgver=1.0
+_pkgname=axyl-qtile
+_destname1="/etc/skel/"
+pkgver=1
 pkgrel=1
 pkgdesc="Qtile Configurations for Axyl OS"
 arch=('x86_64')
-url="https://github.com/axyl-os/axyl-qtile"
+url="https://github.com/axyl-os/"
 license=('MIT')
 depends=('python-pip' 'python-psutil' 'axyl-fonts' 'qtile')
 makedepends=('git')
 provides=("${pkgname}")
 options=(!strip !emptydirs)
-
-prepare() {
-    cp -af ../files/. ${srcdir}
-}
+source=(${_pkgname}::"git+https://github.com/Shinyzenith/${_pkgname}.git") # change Shinyzenith to your org name to get it to work. had to do this for tesitng
+sha256sums=('SKIP')
+install='post.install'
 
 package() {
-    local _skeldir=${pkgdir}/etc/skel
-    local _configdir=${_skeldir}/.config
+	install -dm755 ${pkgdir}${_destname1}
+	echo "NOTE: ONLY DOTFILES WILL BE ADDED."
+	cp -lr ${srcdir}/${_pkgname}${_destname1}.* ${pkgdir}${_destname1}
+	rm -rf ${pkgdir}${_destname1}/"skel"
+    # fixing a issue that i don't know how to solve in cp ^^^^^^^^^^^^^^^^^^^^^^^^^^
+}
 
-    # make the directories
-    mkdir -p "${_skeldir}" && mkdir -p "${_configdir}"
-
-    # Copies Qtile configurations
-    cp -r ${srcdir}/qtile                 "${_configdir}"
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
