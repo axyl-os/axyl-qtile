@@ -42,7 +42,7 @@ mod = "mod4"
 home_dir = os.path.expanduser("~")
 terminal = f"alacritty --config-file {home_dir}/.config/qtile/alacritty/alacritty.yml"
 
-dmenu_conf = "-c -i -l 10 -nb '#0F131F' -nf '#82dbf4' -sb '#5b99aa' -sf '#82dbf4' -fn 'Source Code Pro Medium:size=10'"
+dmenu_conf = "-c -i -l 10 -nb '#0F131F' -nf '#82dbf4' -sb '#5b99aa' -sf '#82dbf4' -fn 'Source Code Pro Medium:size=12'"
 j4 = f"j4-dmenu-desktop --no-generic --term='{terminal}' --dmenu=\"dmenu -p 'Run App:' {dmenu_conf}\""
 
 keys = [
@@ -114,7 +114,7 @@ keys = [
     Key(['mod1'], "l",
         lazy.spawn("./.config/qtile/scripts/dmquick-links"),
         desc="Launches Quick Links dmenu"
-    ), 
+    ),
 
     # Special keys volume control
     Key([], "XF86AudioRaiseVolume", lazy.spawn("volume-up")),
@@ -129,7 +129,7 @@ keys = [
     # lock and settings
     Key(["control", "mod1"], "l", lazy.spawn('./.config/qtile/scripts/lock'), desc="Locks Screen"),
     Key(["control", "mod1"], "s", lazy.spawn('xfce4-settings-manager'), desc="Launches Settings"),
-    
+
     # Screenshot Keys
     Key([mod], "p", lazy.spawn("scrot 'Screenshot_%Y-%m-%d-%S_$wx$h.png' -e 'mv $f $$(xdg-user-dir PICTURES) ; viewnior $$(xdg-user-dir PICTURES)/$f'"), desc="Takes a Screenshot"),
     Key([mod, 'mod1'], "p", lazy.spawn("scrot -d 5 'Screenshot_%Y-%m-%d-%S_$wx$h.png' -e 'mv $f $$(xdg-user-dir PICTURES) ; viewnior $$(xdg-user-dir PICTURES)/$f'"), desc="Takes a Screenshot in 5 seconds"),
@@ -214,7 +214,7 @@ def init_colors():
 def init_separator():
     return widget.Sep(
                 size_percent = 60,
-                margin = 5, 
+                margin = 5,
                 linewidth = 2,
                 background = colors[1],
                 foreground = colors[5])
@@ -283,7 +283,7 @@ def init_widgets_list():
             nerd_icon(
                 "  ",
                 colors[2]
-            ),        
+            ),
             widget.Battery(
                 foreground = colors[2],
                 background = colors[1],
@@ -310,7 +310,7 @@ def init_widgets_list():
             ),
             widget.CurrentLayout(
                 foreground = colors[2],
-                background = colors[1] 
+                background = colors[1]
             ),
             sep,
             nerd_icon(
@@ -365,7 +365,7 @@ def init_widgets_list():
             ),
 
             # Left Side of the bar
-            
+
             widget.Spacer(
                 length = bar.STRETCH,
                 background = colors[1]
@@ -403,7 +403,7 @@ def init_widgets_list():
                 background = colors[1]
             ),
             widget.Systray(
-                background = colors[1] 
+                background = colors[1]
             ),
             space
         ]

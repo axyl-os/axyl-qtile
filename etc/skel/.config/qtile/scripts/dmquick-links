@@ -7,7 +7,7 @@
 BG="#0F131F"
 FG="#82dbf4"
 ALT_BG="#5b99aa"
-FONT="Source Code Pro Medium:size=10"
+FONT="Source Code Pro Medium:size=12"
 
 declare -A links=(
 ["DuckDuckGo"]="start.duckduckgo.com"
