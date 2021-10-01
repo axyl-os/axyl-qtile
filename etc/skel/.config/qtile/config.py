@@ -127,7 +127,7 @@ keys = [
     #Key([mod], "0", lazy.spawn("amixer set Master toggle")),
 
     # lock and settings
-    Key(["control", "mod1"], "l", lazy.spawn('./.config/qtile/scripts/lock'), desc="Locks Screen"),
+    Key(["control", "mod1"], "l", lazy.spawn('./.config/qtile/scripts/qtile-lock'), desc="Locks Screen"),
     Key(["control", "mod1"], "s", lazy.spawn('xfce4-settings-manager'), desc="Launches Settings"),
 
     # Screenshot Keys

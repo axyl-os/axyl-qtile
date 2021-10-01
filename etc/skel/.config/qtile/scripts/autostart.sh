@@ -1,10 +1,8 @@
 #!/bin/env bash
 
-# The need for ksuperkey is only necessary if j4-dmenu-desktop does not show up when the super key is pressed.
-# If you don't have ksuperkey installed, get it from the aur: "yay -S ksuperkey"
 # Enable Super Keys For Menu
-#ksuperkey -e 'Super_L=Alt_L|F1' &
-#ksuperkey -e 'Super_R=Alt_L|F1' &
+ksuperkey -e 'Super_L=Alt_L|F1' &
+ksuperkey -e 'Super_R=Alt_L|F1' &
 
 # set background
 bash $HOME/.config/qtile/scripts/.fehbg
@@ -26,9 +24,6 @@ picom --config $HOME/.config/qtile/picom.conf &
 if [[ ! `pidof xfce-polkit` ]]; then
     /usr/lib/xfce-polkit/xfce-polkit &
 fi
-
-# start mpd
-exec mpd &
 
 # Start udiskie
 udiskie &
