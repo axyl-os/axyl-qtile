@@ -117,14 +117,18 @@ keys = [
     ),
 
     # Special keys volume control
-    Key([], "XF86AudioRaiseVolume", lazy.spawn("volume-up")),
-    Key([], "XF86AudioLowerVolume", lazy.spawn("volume-down")),
-    Key([], "XF86AudioMute", lazy.spawn("amixer set Master toggle")),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("volume --inc")),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("volume --dec")),
+    Key([], "XF86AudioMute", lazy.spawn("volume --toggle")),
 
     # no special keys volume control
-    #Key([mod], "equal", lazy.spawn("volume-up")),
-    #Key([mod], "minus", lazy.spawn("volume-down")),
-    #Key([mod], "0", lazy.spawn("amixer set Master toggle")),
+    #Key([mod], "equal", lazy.spawn("volume --inc")),
+    #Key([mod], "minus", lazy.spawn("volume --dec")),
+    #Key([mod], "0", lazy.spawn("volume --toggle")),
+
+    # Display Brightness control
+    Key([], "XF86MonBrightnessUp", lazy.spawn("brightness --inc")),
+    Key([], "XF86MonBrightnessDown", lazy.spawn("brightness --dec")),
 
     # lock and settings
     Key(["control", "mod1"], "l", lazy.spawn('./.config/qtile/scripts/qtile-lock'), desc="Locks Screen"),
