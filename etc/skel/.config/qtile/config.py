@@ -87,8 +87,8 @@ keys = [
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "c", lazy.window.kill(), desc="Kill focused window"),
 
-    Key([mod, "shift"], "r", lazy.restart(), desc="Restart Qtile"),
-    Key([mod, "shift"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
+    Key(["control", "shift"], "r", lazy.restart(), desc="Restart Qtile"),
+    Key(["control", "shift"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
 
     #
     # custom keybindings made by me: @KungPaoChick/@Kungger
@@ -107,6 +107,9 @@ keys = [
         lazy.spawn(f"networkmanager_dmenu {dmenu_conf}"),
         desc="Launches NetworkManager dmenu"
     ),
+    Key([mod, "shift"], "r",
+        lazy.spawn("rangerfm"),
+        desc="Launches Rangerfm script"),
     Key(['mod1'], "e",
         lazy.spawn("./.config/qtile/scripts/dmedit-configs"),
         desc="Launches Edit Config dmenu"
