@@ -91,7 +91,7 @@ keys = [
     Key(["control", "shift"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
 
     #
-    # custom keybindings made by me: @KungPaoChick/@Kungger
+    # custom keybindings made by @KungPaoChick/@Kungger
     #
 
     # dmenu
@@ -107,9 +107,6 @@ keys = [
         lazy.spawn(f"networkmanager_dmenu {dmenu_conf}"),
         desc="Launches NetworkManager dmenu"
     ),
-    Key([mod, "shift"], "r",
-        lazy.spawn("rangerfm"),
-        desc="Launches Rangerfm script"),
     Key(['mod1'], "e",
         lazy.spawn("./.config/qtile/scripts/dmedit-configs"),
         desc="Launches Edit Config dmenu"
@@ -119,36 +116,8 @@ keys = [
         desc="Launches Quick Links dmenu"
     ),
 
-    # Special keys volume control
-    Key([], "XF86AudioRaiseVolume", lazy.spawn("volume --inc")),
-    Key([], "XF86AudioLowerVolume", lazy.spawn("volume --dec")),
-    Key([], "XF86AudioMute", lazy.spawn("volume --toggle")),
-
-    # no special keys volume control
-    #Key([mod], "equal", lazy.spawn("volume --inc")),
-    #Key([mod], "minus", lazy.spawn("volume --dec")),
-    #Key([mod], "0", lazy.spawn("volume --toggle")),
-
-    # Display Brightness control
-    Key([], "XF86MonBrightnessUp", lazy.spawn("brightness --inc")),
-    Key([], "XF86MonBrightnessDown", lazy.spawn("brightness --dec")),
-
-    # lock and settings
+    # lock screen
     Key(["control", "mod1"], "l", lazy.spawn('./.config/qtile/scripts/qtile-lock'), desc="Locks Screen"),
-    Key(["control", "mod1"], "s", lazy.spawn('xfce4-settings-manager'), desc="Launches Settings"),
-
-    # Screenshot Keys
-    Key([mod], "p", lazy.spawn("scrot 'Screenshot_%Y-%m-%d-%S_$wx$h.png' -e 'mv $f $$(xdg-user-dir PICTURES) ; viewnior $$(xdg-user-dir PICTURES)/$f'"), desc="Takes a Screenshot"),
-    Key([mod, 'mod1'], "p", lazy.spawn("scrot -d 5 'Screenshot_%Y-%m-%d-%S_$wx$h.png' -e 'mv $f $$(xdg-user-dir PICTURES) ; viewnior $$(xdg-user-dir PICTURES)/$f'"), desc="Takes a Screenshot in 5 seconds"),
-
-    # launch applications
-    Key([mod, "shift"], "w", lazy.spawn('xdg-open https://start.duckduckgo.com'), desc="Launches Default Web Browser"),
-    Key([mod, "shift"], "f", lazy.spawn('thunar'), desc="Launches Pcmanfm File Manager"),
-    Key([mod, "shift"], "s", lazy.spawn('spotify'), desc="Launches Spotify"),
-    Key([mod, "shift"], "d", lazy.spawn('discord'), desc="Launches Discord"),
-    Key([mod, "shift"], "g", lazy.spawn('geany'), desc="Launches Text Editor Geany"),
-    Key([mod, "shift"], "c", lazy.spawn('code'), desc="Launches Text Editor Visual Studio Code"),
-    Key([mod, "shift"], "o", lazy.spawn('obs'), desc="Launches OBS Studio")
 ]
 
 # custom workspace names and initialization
