@@ -374,7 +374,7 @@ def init_widgets_list():
                 colors[2]
             ),
             widget.Clock(
-                format = '%I:%M:%S %p',
+                format = '%I:%M %p',
                 foreground = colors[2],
                 background = colors[1]
             ),
