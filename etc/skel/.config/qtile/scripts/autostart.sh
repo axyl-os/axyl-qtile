@@ -3,12 +3,12 @@
 # set background
 bash $HOME/.config/qtile/scripts/.fehbg
 
-# Kill if already running
-killall -9 picom xfce4-power-manager ksuperkey dunst sxhkd
-
 # Enable Super Keys For Menu
 ksuperkey -e 'Super_L=Alt_L|F1' &
 ksuperkey -e 'Super_R=Alt_L|F1' &
+
+# Kill if already running
+killall -9 picom xfce4-power-manager ksuperkey dunst sxhkd
 
 # start hotkey daemon
 sxhkd &
