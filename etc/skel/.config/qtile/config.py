@@ -144,33 +144,31 @@ for i, (name, kwargs) in enumerate(group_names, 1):
     keys.append(Key([mod], str(i), lazy.group[name].toscreen()))        # Switch to another group
     keys.append(Key([mod, "shift"], str(i), lazy.window.togroup(name))) # Send current window to another group
 
+##### DEFAULT THEME SETTINGS FOR LAYOUTS #####
+layout_theme = {"border_width": 3,
+                "margin": 10,
+                "font": "Source Code Pro Medium",
+                "font_size": 10,
+                "border_focus": "#82dbf4",
+                "border_normal": "#0F131F"
+                }
 
 # window layouts
 layouts = [
-    layout.MonadTall(
-        margin=10,
-        font="Source Code Pro Medium",
-        font_size=10,
-        border_width=3,
-        border_focus="#82dbf4",
-        border_normal="#0F131F"),
-    # layout.Columns(border_focus_stack='#42A5F5'),
-    layout.Max(),
+    layout.MonadTall(**layout_theme),
+    layout.Max(**layout_theme),
+    layout.Floating(**layout_theme),
     # Try more layouts by unleashing below layouts.
+    # layout.Columns(**layout_theme),
     # layout.Stack(num_stacks=2),
-    # layout.Bsp(),
-    # layout.Matrix(),
-    layout.Floating(
-        border_focus="#82dbf4",
-        border_width=3,
-        border_normal="#0F131F"
-    ),
-    # layout.MonadWide(),
-    # layout.RatioTile(),
-    # layout.Tile(),
-    # layout.TreeTab(),
-    # layout.VerticalTile(),
-    # layout.Zoomy(),
+    # layout.Bsp(**layout_theme),
+    # layout.Matrix(**layout_theme),
+    # layout.MonadWide(**layout_theme),
+    # layout.RatioTile(**layout_theme),
+    # layout.Tile(**layout_theme),
+    # layout.TreeTab(**layout_theme),
+    # layout.VerticalTile(**layout_theme),
+    # layout.Zoomy(**layout_theme),
 ]
 
 
@@ -374,7 +372,7 @@ def init_widgets_list():
                 colors[2]
             ),
             widget.Clock(
-                format = '%I:%M %p',
+                format = '%I:%M:%S %p',
                 foreground = colors[2],
                 background = colors[1]
             ),
@@ -449,9 +447,10 @@ floating_layout = layout.Floating(float_rules=[
     Match(wm_class='makebranch'),  # gitk
     Match(wm_class='maketag'),  # gitk
     Match(wm_class='ssh-askpass'),  # ssh-askpass
+    Match(wm_class='Viewnior'),  # Photos/Viewnior 
     Match(title='branchdialog'),  # gitk
     Match(title='pinentry'),  # GPG key password entry
-])
+], **layout_theme)
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 reconfigure_screens = True
