@@ -108,16 +108,16 @@ keys = [
         desc="Launches NetworkManager dmenu"
     ),
     Key(['mod1'], "e",
-        lazy.spawn("./.config/qtile/scripts/dmedit-configs"),
+        lazy.spawn("edit-configs"),
         desc="Launches Edit Config dmenu"
     ),
     Key(['mod1'], "l",
-        lazy.spawn("./.config/qtile/scripts/dmquick-links"),
+        lazy.spawn("quick-links"),
         desc="Launches Quick Links dmenu"
     ),
 
     # lock screen
-    Key(["control", "mod1"], "l", lazy.spawn('./.config/qtile/scripts/qtile-lock'), desc="Locks Screen"),
+    Key(["control", "mod1"], "l", lazy.spawn('lock'), desc="Locks Screen"),
 ]
 
 # custom workspace names and initialization
