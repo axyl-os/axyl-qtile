@@ -42,9 +42,6 @@ mod = "mod4"
 home_dir = os.path.expanduser("~")
 terminal = f"alacritty --config-file {home_dir}/.config/qtile/alacritty/alacritty.yml"
 
-dmenu_conf = "-c -i -l 10 -nb '#0F131F' -nf '#82dbf4' -sb '#5b99aa' -sf '#82dbf4' -fn 'Source Code Pro Medium:size=12'"
-j4 = f"j4-dmenu-desktop --no-generic --term='{terminal}' --dmenu=\"dmenu -p 'Run App:' {dmenu_conf}\""
-
 keys = [
     # Switch between windows
     Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
@@ -89,35 +86,6 @@ keys = [
 
     Key(["control", "shift"], "r", lazy.restart(), desc="Restart Qtile"),
     Key(["control", "shift"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-
-    #
-    # custom keybindings made by @KungPaoChick/@Kungger
-    #
-
-    # dmenu
-    Key(['mod1'], "F1",
-        lazy.spawn(j4),
-        desc="Launches dmenu desktop applications"
-    ),
-    Key([mod], "d",
-        lazy.spawn(f"dmenu_run -p 'Run Command:' {dmenu_conf}"),
-        desc="Launches dmenu"
-    ),
-    Key([mod], "n",
-        lazy.spawn(f"networkmanager_dmenu {dmenu_conf}"),
-        desc="Launches NetworkManager dmenu"
-    ),
-    Key(['mod1'], "e",
-        lazy.spawn("edit-configs"),
-        desc="Launches Edit Config dmenu"
-    ),
-    Key(['mod1'], "l",
-        lazy.spawn("quick-links"),
-        desc="Launches Quick Links dmenu"
-    ),
-
-    # lock screen
-    Key(["control", "mod1"], "l", lazy.spawn('lock'), desc="Locks Screen"),
 ]
 
 # custom workspace names and initialization
