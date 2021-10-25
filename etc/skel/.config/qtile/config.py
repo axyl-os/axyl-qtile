@@ -117,8 +117,8 @@ layout_theme = {"border_width": 3,
                 "margin": 10,
                 "font": "Source Code Pro Medium",
                 "font_size": 10,
-                "border_focus": "#82dbf4",
-                "border_normal": "#0F131F"
+                "border_focus": "#51afef",
+                "border_normal": "#282c34"
                 }
 
 # window layouts
@@ -126,14 +126,15 @@ layouts = [
     layout.MonadTall(**layout_theme),
     layout.Max(**layout_theme),
     layout.Floating(**layout_theme),
+    layout.Stack(num_stacks=2, **layout_theme),
+    layout.Bsp(**layout_theme),
+    layout.Tile(**layout_theme),
+
     # Try more layouts by unleashing below layouts.
     # layout.Columns(**layout_theme),
-    # layout.Stack(num_stacks=2),
-    # layout.Bsp(**layout_theme),
     # layout.Matrix(**layout_theme),
     # layout.MonadWide(**layout_theme),
     # layout.RatioTile(**layout_theme),
-    # layout.Tile(**layout_theme),
     # layout.TreeTab(**layout_theme),
     # layout.VerticalTile(**layout_theme),
     # layout.Zoomy(**layout_theme),
@@ -142,16 +143,16 @@ layouts = [
 
 # colors for the bar/widgets/panel
 def init_colors():
-    return [["#0F131F", "#0F131F"], # color 0 | bg
-            ["#0F131F", "#0F131F"], # color 1 | bg
-            ["#82dbf4", "#82dbf4"], # color 2 | fg
-            ["#F7A01D", "#F7A01D"], # color 3 | red
-            ["#F7A11D", "#F7A11D"], # color 4 | green
-            ["#1A6897", "#1A6897"], # color 5 | yellow
-            ["#548FAB", "#548FAB"], # color 6 | blue
-            ["#1798E5", "#1798E5"], # color 7 | magenta
-            ["#16B0F7", "#16B0F7"], # color 8 | cyan
-            ["#82dbf4", "#82dbf4"]] # color 9 | white
+    return [["#282c34", "#282c34"], # color 0 | bg
+            ["#282c34", "#282c34"], # color 1 | bg
+            ["#bbc2cf", "#bbc2cf"], # color 2 | fg
+            ["#ff6c6b", "#ff6c6b"], # color 3 | red
+            ["#98be65", "#98be65"], # color 4 | green
+            ["#ecbe7b", "#ecbe7b"], # color 5 | yellow
+            ["#51afef", "#51afef"], # color 6 | blue
+            ["#c678dd", "#c678dd"], # color 7 | magenta
+            ["#46d9ff", "#46d9ff"], # color 8 | cyan
+            ["#bbc2cf", "#bbc2cf"]] # color 9 | white
 
 def init_separator():
     return widget.Sep(
@@ -159,7 +160,7 @@ def init_separator():
                 margin = 5,
                 linewidth = 2,
                 background = colors[1],
-                foreground = colors[5])
+                foreground = "#555555")
 
 def nerd_icon(nerdfont_icon, fg_color):
     return widget.TextBox(
@@ -203,7 +204,7 @@ def init_widgets_list():
                 margin = 3,
                 mouse_callbacks = {
                     'Button1': lambda : qtile.cmd_spawn(
-                        j4
+                        'j4-dmenu'
                     ),
                     'Button3': lambda : qtile.cmd_spawn(
                         f'{terminal} -e vim {home_dir}/.config/qtile/config.py'
@@ -215,16 +216,16 @@ def init_widgets_list():
                 fontsize = 15,
                 foreground = colors[2],
                 background = colors[1],
-                borderwidth = 8,
+                borderwidth = 4,
                 highlight_method = "text",
-                this_current_screen_border = colors[5],
+                this_current_screen_border = colors[6],
                 active = colors[4],
                 inactive = colors[2]
             ),
             sep,
             nerd_icon(
                 "  ",
-                colors[2]
+                colors[6]
             ),
             widget.Battery(
                 foreground = colors[2],
@@ -233,7 +234,7 @@ def init_widgets_list():
             ),
             nerd_icon(
                 "墳",
-                colors[2]
+                colors[3]
             ),
             widget.Volume(
                 foreground = colors[2],
@@ -248,7 +249,7 @@ def init_widgets_list():
 
             nerd_icon(
                 "",
-                colors[2]
+                colors[7]
             ),
             widget.CurrentLayout(
                 foreground = colors[2],
@@ -257,7 +258,7 @@ def init_widgets_list():
             sep,
             nerd_icon(
                 "﬙",
-                colors[2]
+                colors[3]
             ),
             widget.CPU(
                 format = "{load_percent}%",
@@ -270,7 +271,7 @@ def init_widgets_list():
             ),
             nerd_icon(
                 "",
-                colors[2]
+                colors[4]
             ),
             widget.Memory(
                 format = "{MemUsed:.0f}{mm}",
@@ -283,7 +284,7 @@ def init_widgets_list():
             ),
             nerd_icon(
                 "",
-                colors[2]
+                colors[6]
             ),
             widget.GenPollText(
                 foreground = colors[2],
@@ -297,7 +298,7 @@ def init_widgets_list():
             sep,
             nerd_icon(
                 "",
-                colors[2]
+                colors[4]
             ),
             widget.GenPollText(
                 foreground = colors[2],
@@ -314,7 +315,7 @@ def init_widgets_list():
             ),
             nerd_icon(
                 "",
-                colors[2]
+                colors[4]
             ),
             widget.Net(
                 format = "{down} ↓↑ {up}",
@@ -322,13 +323,13 @@ def init_widgets_list():
                 background = colors[1],
                 update_interval = 2,
                 mouse_callbacks = {
-                    'Button1': lambda : qtile.cmd_spawn(f"networkmanager_dmenu {dmenu_conf}")
+                    'Button1': lambda : qtile.cmd_spawn("def-nmdmenu")
                 }
             ),
             sep,
             nerd_icon(
                 "",
-                colors[2]
+                colors[7]
             ),
             widget.Clock(
                 format = '%b %d-%Y',
@@ -337,7 +338,7 @@ def init_widgets_list():
             ),
             nerd_icon(
                 "",
-                colors[2]
+                colors[8]
             ),
             widget.Clock(
                 format = '%I:%M:%S %p',

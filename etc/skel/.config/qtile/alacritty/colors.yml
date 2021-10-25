@@ -1,28 +1,17 @@
-## Colors configuration
+# Colors (Doom One)
 colors:
   # Default colors
   primary:
-    background: '#0F131F'
-    foreground: '#82dbf4'
+    background: '#282c34'
+    foreground: '#bbc2cf'
 
   # Normal colors
   normal:
-    black:   '#0F131F'
-    red:     '#F7A01D'
-    green:   '#F7A11D'
-    yellow:  '#1A6897'
-    blue:    '#548FAB'
-    magenta: '#1798E5'
-    cyan:    '#16B0F7'
-    white:   '#82dbf4'
-
-  # Bright colors
-  bright:
-    black:   '#5b99aa'
-    red:     '#F7A01D'
-    green:   '#F7A11D'
-    yellow:  '#1A6897'
-    blue:    '#548FAB'
-    magenta: '#1798E5'
-    cyan:    '#16B0F7'
-    white:   '#82dbf4'
+    black:   '#282c34'
+    red:     '#ff6c6b'
+    green:   '#98be65'
+    yellow:  '#ecbe7b'
+    blue:    '#51afef'
+    magenta: '#c678dd'
+    cyan:    '#46d9ff'
+    white:   '#bbc2cf'
