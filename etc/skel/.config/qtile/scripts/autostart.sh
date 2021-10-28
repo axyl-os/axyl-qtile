@@ -30,3 +30,6 @@ fi
 
 # Start udiskie
 udiskie &
+
+# replace neovim colorscheme
+sed -i "s/theme =.*$/theme = \"onedark\",/g" $HOME/.config/nvim/lua/chadrc.lua
