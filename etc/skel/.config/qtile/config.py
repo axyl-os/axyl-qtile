@@ -75,7 +75,7 @@ keys = [
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with
     # multiple stack panes
-    Key([mod, "shift"], "Return", lazy.layout.toggle_split(),
+    Key([mod, "control"], "Return", lazy.layout.toggle_split(),
         desc="Toggle between split and unsplit sides of stack"),
 
     # Toggle between different layouts as defined below
@@ -415,6 +415,7 @@ floating_layout = layout.Floating(float_rules=[
     Match(wm_class='maketag'),  # gitk
     Match(wm_class='ssh-askpass'),  # ssh-askpass
     Match(wm_class='Viewnior'),  # Photos/Viewnior 
+    Match(wm_class='Alafloat'),  # Floating Alacritty Terminal 
     Match(title='branchdialog'),  # gitk
     Match(title='pinentry'),  # GPG key password entry
 ], **layout_theme)
