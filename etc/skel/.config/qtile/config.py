@@ -141,16 +141,16 @@ layouts = [
 
 # colors for the bar/widgets/panel
 def init_colors():
-    return [["#282c34", "#282c34"], # color 0 | bg
-            ["#282c34", "#282c34"], # color 1 | bg
-            ["#bbc2cf", "#bbc2cf"], # color 2 | fg
-            ["#ff6c6b", "#ff6c6b"], # color 3 | red
-            ["#98be65", "#98be65"], # color 4 | green
-            ["#ecbe7b", "#ecbe7b"], # color 5 | yellow
-            ["#51afef", "#51afef"], # color 6 | blue
-            ["#c678dd", "#c678dd"], # color 7 | magenta
-            ["#46d9ff", "#46d9ff"], # color 8 | cyan
-            ["#bbc2cf", "#bbc2cf"]] # color 9 | white
+    return [["#1d1f21", "#1d1f21"], # color 0 | bg
+            ["#1d1f21", "#1d1f21"], # color 1 | bg
+            ["#c5c8c6", "#c5c8c6"], # color 2 | fg
+            ["#cc6666", "#cc6666"], # color 3 | red
+            ["#b5bd68", "#b5bd68"], # color 4 | green
+            ["#e6c547", "#e6c547"], # color 5 | yellow
+            ["#81a2be", "#81a2be"], # color 6 | blue
+            ["#b294bb", "#b294bb"], # color 7 | magenta
+            ["#70c0ba", "#70c0ba"], # color 8 | cyan
+            ["#373b41", "#373b41"]] # color 9 | white
 
 def init_separator():
     return widget.Sep(
