@@ -222,7 +222,7 @@ def init_widgets_list():
             ),
             sep,
             nerd_icon(
-                "  ",
+                "  ",
                 colors[6]
             ),
             widget.Battery(
@@ -339,7 +339,7 @@ def init_widgets_list():
                 colors[8]
             ),
             widget.Clock(
-                format = '%I:%M:%S %p',
+                format = '%I:%M %p',
                 foreground = colors[2],
                 background = colors[1]
             ),
