@@ -115,8 +115,8 @@ layout_theme = {"border_width": 3,
                 "margin": 15,
                 "font": "Source Code Pro Medium",
                 "font_size": 10,
-                "border_focus": "#51afef",
-                "border_normal": "#282c34"
+                "border_focus": "#81a2be",
+                "border_normal": "#1d1f21"
                 }
 
 # window layouts
