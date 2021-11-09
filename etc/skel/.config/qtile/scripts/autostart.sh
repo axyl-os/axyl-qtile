@@ -1,5 +1,7 @@
 #!/bin/env bash
 
+source colors
+
 # set background
 bash $HOME/.config/qtile/scripts/.fehbg
 
@@ -12,9 +14,9 @@ sxhkd &
 # Launch notification daemon
 dunst \
 -geom "280x50-10+38" -frame_width "1" -font "Source Code Pro Medium 10" \
--lb "#0F131FFF" -lf "#82dbf4FF" -lfr "#548FABFF" \
--nb "#0F131FFF" -nf "#82dbf4FF" -nfr "#548FABFF" \
--cb "#0F131FFF" -cf "#82dbf4FF" -cfr "#BF616AFF" &
+-lb "${bg}FF" -lf "${fg}FF" -lfr "${altbg}FF" \
+-nb "${bg}FF" -nf "${fg}FF" -nfr "${altbg}FF" \
+-cb "${bg}FF" -cf "#82dbf4FF" -cfr "#BF616AFF" &
 
 # Enable Super Keys For Menu
 ksuperkey -e 'Super_L=Alt_L|F1' &
