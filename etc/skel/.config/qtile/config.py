@@ -115,8 +115,8 @@ layout_theme = {"border_width": 3,
                 "margin": 15,
                 "font": "Source Code Pro Medium",
                 "font_size": 10,
-                "border_focus": "#81a2be",
-                "border_normal": "#1d1f21"
+                "border_focus": "#bd93f9",
+                "border_normal": "#555555"
                 }
 
 # window layouts
@@ -141,16 +141,16 @@ layouts = [
 
 # colors for the bar/widgets/panel
 def init_colors():
-    return [["#1d1f21", "#1d1f21"], # color 0 | bg
-            ["#1d1f21", "#1d1f21"], # color 1 | bg
-            ["#c5c8c6", "#c5c8c6"], # color 2 | fg
-            ["#cc6666", "#cc6666"], # color 3 | red
-            ["#b5bd68", "#b5bd68"], # color 4 | green
-            ["#e6c547", "#e6c547"], # color 5 | yellow
-            ["#81a2be", "#81a2be"], # color 6 | blue
-            ["#b294bb", "#b294bb"], # color 7 | magenta
-            ["#70c0ba", "#70c0ba"], # color 8 | cyan
-            ["#373b41", "#373b41"]] # color 9 | white
+    return [["#282a36", "#282a36"], # color 0 | bg
+            ["#282a36", "#282a36"], # color 1 | bg
+            ["#f8f8f2", "#f8f8f2"], # color 2 | fg
+            ["#ff5555", "#ff5555"], # color 3 | red
+            ["#50fa7b", "#50fa7b"], # color 4 | green
+            ["#f1fa8c", "#f1fa8c"], # color 5 | yellow
+            ["#bd93f9", "#bd93f9"], # color 6 | blue
+            ["#ff79c6", "#ff79c6"], # color 7 | magenta
+            ["#8be9fd", "#8be9fd"], # color 8 | cyan
+            ["#bbbbbb", "#bbbbbb"]] # color 9 | white
 
 def init_separator():
     return widget.Sep(
