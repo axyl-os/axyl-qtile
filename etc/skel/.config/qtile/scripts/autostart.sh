@@ -29,3 +29,7 @@ udiskie &
 
 # replace neovim colorscheme
 sed -i "s/theme =.*$/theme = \"chadracula\",/g" $HOME/.config/nvim/lua/chadrc.lua
+
+# change xfce4-terminal colorscheme
+XFCE_TERM_PATH="$HOME/.config/xfce4/terminal"
+cp "$XFCE_TERM_PATH"/colorschemes/dracula "$XFCE_TERM_PATH"/terminalrc
