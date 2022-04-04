@@ -34,3 +34,7 @@ sed -i "s/theme =.*$/theme = \"chadracula\",/g" $HOME/.config/nvim/lua/custom/ch
 # change xfce4-terminal colorscheme
 XFCE_TERM_PATH="$HOME/.config/xfce4/terminal"
 cp "$XFCE_TERM_PATH"/colorschemes/dracula "$XFCE_TERM_PATH"/terminalrc
+
+# change cava colorscheme
+CAVA_PATH="$HOME/.config/cava"
+cp "$CAVA_PATH"/colorschemes/dracula "$CAVA_PATH"/config
