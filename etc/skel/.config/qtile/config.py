@@ -87,6 +87,8 @@ keys = [
 ]
 
 # custom workspace names and initialization
+
+
 class Groupings:
 
     def init_group_names(self):
@@ -107,8 +109,10 @@ if __name__ in ["config", "__main__"]:
     groups = Groupings().init_groups()
 
 for i, (name, kwargs) in enumerate(group_names, 1):
-    keys.append(Key([mod], str(i), lazy.group[name].toscreen()))        # Switch to another group
-    keys.append(Key([mod, "shift"], str(i), lazy.window.togroup(name))) # Send current window to another group
+    # Switch to another group
+    keys.append(Key([mod], str(i), lazy.group[name].toscreen()))
+    # Send current window to another group
+    keys.append(Key([mod, "shift"], str(i), lazy.window.togroup(name)))
 
 ##### DEFAULT THEME SETTINGS FOR LAYOUTS #####
 layout_theme = {"border_width": 3,
@@ -141,42 +145,29 @@ layouts = [
 
 # colors for the bar/widgets/panel
 def init_colors():
-    return [["#282a36", "#282a36"], # color 0 | bg
-            ["#282a36", "#282a36"], # color 1 | bg
-            ["#f8f8f2", "#f8f8f2"], # color 2 | fg
-            ["#ff5555", "#ff5555"], # color 3 | red
-            ["#50fa7b", "#50fa7b"], # color 4 | green
-            ["#f1fa8c", "#f1fa8c"], # color 5 | yellow
-            ["#bd93f9", "#bd93f9"], # color 6 | blue
-            ["#ff79c6", "#ff79c6"], # color 7 | magenta
-            ["#8be9fd", "#8be9fd"], # color 8 | cyan
-            ["#bbbbbb", "#bbbbbb"]] # color 9 | white
+    return [["#282a36", "#282a36"],  # color 0 | bg
+            ["#282a36", "#282a36"],  # color 1 | bg
+            ["#f8f8f2", "#f8f8f2"],  # color 2 | fg
+            ["#ff5555", "#ff5555"],  # color 3 | red
+            ["#50fa7b", "#50fa7b"],  # color 4 | green
+            ["#f1fa8c", "#f1fa8c"],  # color 5 | yellow
+            ["#bd93f9", "#bd93f9"],  # color 6 | blue
+            ["#ff79c6", "#ff79c6"],  # color 7 | magenta
+            ["#8be9fd", "#8be9fd"],  # color 8 | cyan
+            ["#bbbbbb", "#bbbbbb"]]  # color 9 | white
 
-def init_separator():
-    return widget.Sep(
-                size_percent = 60,
-                margin = 5,
-                linewidth = 2,
-                background = colors[1],
-                foreground = "#555555")
 
 def nerd_icon(nerdfont_icon, fg_color):
     return widget.TextBox(
-                font = "Iosevka Nerd Font",
-                fontsize = 15,
-                text = nerdfont_icon,
-                foreground = fg_color,
-                background = colors[1])
-
-def init_edge_spacer():
-    return widget.Spacer(
-                length = 5,
-                background = colors[1])
+        font="Iosevka Nerd Font",
+        fontsize=15,
+        padding=8,
+        text=nerdfont_icon,
+        foreground=fg_color,
+        background=colors[1])
 
 
 colors = init_colors()
-sep = init_separator()
-space = init_edge_spacer()
 
 widget_defaults = dict(
     font='Source Code Pro Medium',
@@ -188,172 +179,204 @@ extension_defaults = widget_defaults.copy()
 
 def init_widgets_list():
     widgets_list = [
-            # Left Side of the bar
+        # Left Side of the bar
 
-            space,
-            #widget.Image(
-            #    filename = "/usr/share/pixmaps/archlinux-logo.png",
-            #    background = colors[1],
-            #    margin = 3
-            #),
-            widget.Image(
-                filename = "~/.config/qtile/python.png",
-                background = colors[1],
-                margin = 3,
-                mouse_callbacks = {
-                    'Button1': lambda : qtile.cmd_spawn(
-                        'j4-dmenu'
-                    ),
-                    'Button3': lambda : qtile.cmd_spawn(
-                        f'{terminal} -e vim {home_dir}/.config/qtile/config.py'
-                    )
-                }
-            ),
-            widget.GroupBox(
-                font = "Iosevka Nerd Font",
-                fontsize = 15,
-                foreground = colors[2],
-                background = colors[1],
-                borderwidth = 4,
-                highlight_method = "text",
-                this_current_screen_border = colors[6],
-                active = colors[4],
-                inactive = colors[2]
-            ),
-            sep,
-            nerd_icon(
-                "  ",
-                colors[6]
-            ),
-            widget.Battery(
-                foreground = colors[2],
-                background = colors[1],
-                format = "{percent:2.0%}"
-            ),
-            nerd_icon(
-                "墳",
-                colors[3]
-            ),
-            widget.Volume(
-                foreground = colors[2],
-                background = colors[1]
-            ),
-            widget.Spacer(
-                length = bar.STRETCH,
-                background = colors[1]
-            ),
+        widget.Spacer(
+            length=5,
+            background=colors[1]
+        ),
+        # widget.Image(
+        #    filename = "/usr/share/pixmaps/archlinux-logo.png",
+        #    background = colors[1],
+        #    margin = 3
+        # ),
+        widget.Image(
+            filename="~/.config/qtile/python.png",
+            background=colors[1],
+            margin=3,
+            mouse_callbacks={
+                'Button1': lambda: qtile.cmd_spawn(
+                    'j4-dmenu'
+                ),
+                'Button3': lambda: qtile.cmd_spawn(
+                    f'{terminal} -e vim {home_dir}/.config/qtile/config.py'
+                )
+            }
+        ),
+        widget.GroupBox(
+            font="Iosevka Nerd Font",
+            fontsize=15,
+            foreground=colors[2],
+            background=colors[1],
+            borderwidth=4,
+            highlight_method="text",
+            this_current_screen_border=colors[6],
+            active=colors[4],
+            inactive=colors[2]
+        ),
+        widget.Sep(
+            size_percent=60,
+            margin=5,
+            linewidth=2,
+            background=colors[1],
+            foreground="#555555"
+        ),
+        nerd_icon(
+            "  ",
+            colors[6]
+        ),
+        widget.Battery(
+            foreground=colors[2],
+            background=colors[1],
+            format="{percent:2.0%}"
+        ),
+        nerd_icon(
+            "墳",
+            colors[3]
+        ),
+        widget.Volume(
+            foreground=colors[2],
+            background=colors[1]
+        ),
+        widget.Spacer(
+            length=bar.STRETCH,
+            background=colors[1]
+        ),
 
-            # Center bar
+        # Center bar
 
-            nerd_icon(
-                "",
-                colors[7]
-            ),
-            widget.CurrentLayout(
-                foreground = colors[2],
-                background = colors[1]
-            ),
-            sep,
-            nerd_icon(
-                "﬙",
-                colors[3]
-            ),
-            widget.CPU(
-                format = "{load_percent}%",
-                foreground = colors[2],
-                background = colors[1],
-                update_interval = 2,
-                mouse_callbacks = {
-                    'Button1': lambda : qtile.cmd_spawn(f"{terminal} -e gtop")
-                }
-            ),
-            nerd_icon(
-                "",
-                colors[4]
-            ),
-            widget.Memory(
-                format = "{MemUsed:.0f}{mm}",
-                foreground = colors[2],
-                background = colors[1],
-                update_interval = 2,
-                mouse_callbacks = {
-                    'Button1': lambda : qtile.cmd_spawn(f"{terminal} -e gtop")
-                }
-            ),
-            nerd_icon(
-                "",
-                colors[6]
-            ),
-            widget.GenPollText(
-                foreground = colors[2],
-                background = colors[1],
-                update_interval = 5,
-                func = lambda: storage.diskspace('FreeSpace'),
-                mouse_callbacks = {
-                    'Button1': lambda : qtile.cmd_spawn(f"{terminal} -e gtop")
-                }
-            ),
-            sep,
-            nerd_icon(
-                "",
-                colors[4]
-            ),
-            widget.GenPollText(
-                foreground = colors[2],
-                background = colors[1],
-                update_interval = 5,
-                func = lambda: subprocess.check_output(f"{home_dir}/.config/qtile/scripts/num-installed-pkgs").decode("utf-8")
-            ),
+        nerd_icon(
+            "",
+            colors[7]
+        ),
+        widget.CurrentLayout(
+            foreground=colors[2],
+            background=colors[1]
+        ),
+        widget.Sep(
+            size_percent=60,
+            margin=5,
+            linewidth=2,
+            background=colors[1],
+            foreground="#555555"
+        ),
+        nerd_icon(
+            "﬙",
+            colors[3]
+        ),
+        widget.CPU(
+            format="{load_percent}%",
+            foreground=colors[2],
+            background=colors[1],
+            update_interval=2,
+            mouse_callbacks={
+                'Button1': lambda: qtile.cmd_spawn(f"{terminal} -e gtop")
+            }
+        ),
+        nerd_icon(
+            "",
+            colors[4]
+        ),
+        widget.Memory(
+            format="{MemUsed:.0f}{mm}",
+            foreground=colors[2],
+            background=colors[1],
+            update_interval=2,
+            mouse_callbacks={
+                'Button1': lambda: qtile.cmd_spawn(f"{terminal} -e gtop")
+            }
+        ),
+        nerd_icon(
+            "",
+            colors[6]
+        ),
+        widget.GenPollText(
+            foreground=colors[2],
+            background=colors[1],
+            update_interval=5,
+            func=lambda: storage.diskspace('FreeSpace'),
+            mouse_callbacks={
+                'Button1': lambda: qtile.cmd_spawn(f"{terminal} -e gtop")
+            }
+        ),
+        widget.Sep(
+            size_percent=60,
+            margin=5,
+            linewidth=2,
+            background=colors[1],
+            foreground="#555555"
+        ),
+        nerd_icon(
+            "",
+            colors[4]
+        ),
+        widget.GenPollText(
+            foreground=colors[2],
+            background=colors[1],
+            update_interval=5,
+            func=lambda: subprocess.check_output(
+                f"{home_dir}/.config/qtile/scripts/num-installed-pkgs").decode("utf-8")
+        ),
 
-            # Left Side of the bar
+        # Left Side of the bar
 
-            widget.Spacer(
-                length = bar.STRETCH,
-                background = colors[1]
-            ),
-            nerd_icon(
-                "",
-                colors[4]
-            ),
-            widget.Net(
-                format = "{down} ↓↑ {up}",
-                foreground = colors[2],
-                background = colors[1],
-                update_interval = 2,
-                mouse_callbacks = {
-                    'Button1': lambda : qtile.cmd_spawn("def-nmdmenu")
-                }
-            ),
-            sep,
-            nerd_icon(
-                "",
-                colors[7]
-            ),
-            widget.Clock(
-                format = '%b %d-%Y',
-                foreground = colors[2],
-                background = colors[1]
-            ),
-            nerd_icon(
-                "",
-                colors[8]
-            ),
-            widget.Clock(
-                format = '%I:%M %p',
-                foreground = colors[2],
-                background = colors[1]
-            ),
-            widget.Systray(
-                background = colors[1]
-            ),
-            space
-        ]
+        widget.Spacer(
+            length=bar.STRETCH,
+            background=colors[1]
+        ),
+        nerd_icon(
+            "",
+            colors[4]
+        ),
+        widget.Net(
+            format="{down} ↓↑ {up}",
+            foreground=colors[2],
+            background=colors[1],
+            update_interval=2,
+            mouse_callbacks={
+                'Button1': lambda: qtile.cmd_spawn("def-nmdmenu")
+            }
+        ),
+        widget.Sep(
+            size_percent=60,
+            margin=5,
+            linewidth=2,
+            background=colors[1],
+            foreground="#555555"
+        ),
+        nerd_icon(
+            "",
+            colors[7]
+        ),
+        widget.Clock(
+            format='%b %d-%Y',
+            foreground=colors[2],
+            background=colors[1]
+        ),
+        nerd_icon(
+            "",
+            colors[8]
+        ),
+        widget.Clock(
+            format='%I:%M %p',
+            foreground=colors[2],
+            background=colors[1]
+        ),
+        widget.Systray(
+            background=colors[1]
+        ),
+        widget.Spacer(
+            length=5,
+            background=colors[1]
+        ),
+    ]
     return widgets_list
 
 
 # screens/bar
 def init_screens():
-    return [Screen(top=bar.Bar(widgets=init_widgets_list(), size=35, opacity=0.9, margin=[5,10,0,10]))]
+    return [Screen(top=bar.Bar(widgets=init_widgets_list(), size=35, opacity=0.9, margin=[5, 10, 0, 10]))]
+
 
 screens = init_screens()
 
@@ -369,18 +392,22 @@ mouse = [
 #
 # assign apps to groups/workspace
 #
+
+
 @hook.subscribe.client_new
 def assign_app_group(client):
     d = {}
 
     # assign deez apps
     d[group_names[0][0]] = ['Alacritty', 'xfce4-terminal']
-    d[group_names[1][0]] = ['Navigator', 'discord', 'brave-browser', 'midori', 'qutebrowser']
+    d[group_names[1][0]] = ['Navigator', 'discord',
+                            'brave-browser', 'midori', 'qutebrowser']
     d[group_names[2][0]] = ['pcmanfm', 'thunar']
     d[group_names[3][0]] = ['code', 'geany']
     d[group_names[4][0]] = ['vlc', 'obs', 'mpv', 'mplayer', 'lxmusic', 'gimp']
     d[group_names[5][0]] = ['spotify']
-    d[group_names[6][0]] = ['lxappearance', 'gpartedbin', 'lxtask', 'lxrandr', 'arandr', 'pavucontrol', 'xfce4-settings-manager']
+    d[group_names[6][0]] = ['lxappearance', 'gpartedbin', 'lxtask',
+                            'lxrandr', 'arandr', 'pavucontrol', 'xfce4-settings-manager']
 
     wm_class = client.window.get_wm_class()[0]
     for i in range(len(d)):
@@ -391,12 +418,13 @@ def assign_app_group(client):
 
 
 main = None
-@hook.subscribe.startup
+@hook.subscribe.startup_once
 def start_once():
     start_script = os.path.expanduser("~/.config/qtile/scripts/autostart.sh")
     subprocess.call([start_script])
 
-@hook.subscribe.startup_once
+
+@hook.subscribe.startup
 def start_always():
     # fixes the cursor
     subprocess.Popen(['xsetroot', '-cursor_name', 'left_ptr'])
@@ -414,8 +442,8 @@ floating_layout = layout.Floating(float_rules=[
     Match(wm_class='makebranch'),  # gitk
     Match(wm_class='maketag'),  # gitk
     Match(wm_class='ssh-askpass'),  # ssh-askpass
-    Match(wm_class='Viewnior'),  # Photos/Viewnior 
-    Match(wm_class='Alafloat'),  # Floating Alacritty Terminal 
+    Match(wm_class='Viewnior'),  # Photos/Viewnior
+    Match(wm_class='Alafloat'),  # Floating Alacritty Terminal
     Match(title='branchdialog'),  # gitk
     Match(title='pinentry'),  # GPG key password entry
 ], **layout_theme)
