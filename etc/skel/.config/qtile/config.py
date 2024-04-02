@@ -40,7 +40,7 @@ from libqtile.lazy import lazy
 # default variables
 mod = "mod4"
 home_dir = os.path.expanduser("~")
-terminal = f"alacritty --config-file {home_dir}/.config/qtile/alacritty/alacritty.yml"
+terminal = f"alacritty --config-file {home_dir}/.config/qtile/alacritty/alacritty.toml"
 
 keys = [
     # Switch between windows
